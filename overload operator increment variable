@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Counter {
+private:
+    int value;
+
+public:
+    // Constructor
+    Counter(int val = 0) : value(val) {}
+
+    // Overload prefix ++ operator
+    Counter& operator++() {
+        ++value; // Increment value
+        return *this;
+    }
+
+    // Overload postfix ++ operator
+    Counter operator++(int) {
+        Counter temp = *this; // Save current state
+        value++; // Increment value
+        return temp; // Return old state
+    }
+
+    // Method to get the value (for demonstration)
+    int getValue() const {
+        return value;
+    }
+};
+
+int main() {
+    Counter count(5);
+
+    cout << "Initial value: " << count.getValue() << endl;
+
+    ++count; // Prefix increment
+    cout << "After prefix increment: " << count.getValue() << endl;
+
+    count++; // Postfix increment
+    cout << "After postfix increment: " << count.getValue() << endl;
+
+    return 0;
+}
